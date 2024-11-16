@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void fetchCategories() {
     setState(() {
-      categories = categoryService.fetchCategories(); // Carregar categorias do Firebase
+      categories = categoryService.fetchCategories(); 
     });
   }
 
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('To-Do List'),
         actions: [
-          // Botão para redirecionar para a tela de categorias
+          
           IconButton(
             icon: const Icon(Icons.category),
             onPressed: () {
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
-          // Use a FutureBuilder para carregar categorias dinamicamente
+          
           FutureBuilder<List<Category>>(
             future: categories,
             builder: (context, snapshot) {
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                   itemBuilder: (context) {
-                    // Adicionar as categorias dinâmicas aqui
+                    
                     List<PopupMenuEntry<String>> menuItems = [
                       const PopupMenuItem(value: "Todas", child: Text("Todas")),
                     ];

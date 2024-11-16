@@ -30,8 +30,8 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
     title = widget.task?.title ?? '';
     description = widget.task?.description ?? '';
     dueDate = widget.task?.dueDate ?? DateTime.now();
-    selectedCategory = widget.task?.category; // Se já houver categoria
-    categories = categoryService.fetchCategories(); // Carregar categorias do Firebase
+    selectedCategory = widget.task?.category; 
+    categories = categoryService.fetchCategories(); 
   }
 
   Future<void> _selectDueDate() async {
@@ -83,12 +83,12 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
                 decoration: const InputDecoration(labelText: 'Descrição'),
                 onSaved: (value) => description = value!,
               ),
-              // Dropdown com categorias carregadas dinamicamente do Firebase
+              
               FutureBuilder<List<Category>>(
                 future: categories,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();  // Carregando
+                    return const CircularProgressIndicator();  
                   } else if (snapshot.hasError) {
                     return Text('Erro ao carregar categorias: ${snapshot.error}');
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -112,15 +112,15 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
                 },
               ),
               GestureDetector(
-                onTap: _selectDueDate,  // Selecionar data de vencimento
-                child: AbsorbPointer(  // Impede que o campo de texto seja editado diretamente
+                onTap: _selectDueDate,  
+                child: AbsorbPointer(  
                   child: TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Data de Vencimento',
-                      hintText: "${dueDate.toLocal()}".split(' ')[0], // Exibe a data
+                      hintText: "${dueDate.toLocal()}".split(' ')[0], 
                     ),
                     controller: TextEditingController(
-                      text: "${dueDate.toLocal()}".split(' ')[0], // Exibe apenas a data
+                      text: "${dueDate.toLocal()}".split(' ')[0], 
                     ),
                   ),
                 ),
@@ -134,7 +134,7 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
                       title: title,
                       description: description,
                       dueDate: dueDate,
-                      category: selectedCategory ?? '', // Usar a categoria selecionada
+                      category: selectedCategory ?? '', 
                     );
                     if (widget.task == null) {
                       await _firebaseService.addTask(task);
