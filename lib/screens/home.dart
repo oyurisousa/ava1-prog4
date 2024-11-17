@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo/screens/category.dart';
-import 'package:todo/screens/task_form.dart';
+import '../screens/category.dart';
+import '../screens/task_form.dart';
 import '../services/firebase_service.dart';
 import '../services/category_service.dart';
 import '../models/task.dart';

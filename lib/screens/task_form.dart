@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo/services/category_service.dart';
-import 'package:todo/services/firebase_service.dart';
+import '../services/category_service.dart';
+import '../services/firebase_service.dart';
 import '../models/task.dart';
 import '../models/category.dart';
 
